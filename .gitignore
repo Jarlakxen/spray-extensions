@@ -2,7 +2,7 @@
 *.log
 
 # sbt specific
-.cache/
+.cache
 .history/
 .lib/
 dist/*
@@ -12,6 +12,13 @@ src_managed/
 project/boot/
 project/plugins/project/
 
-# Scala-IDE specific
+# eclipse conf file
+.settings
+.classpath
+.project
+.manager
 .scala_dependencies
-.worksheet
+
+# idea
+.idea
+*.iml
