@@ -1,9 +1,9 @@
 import sbt.Keys._
-import sbtrelease.ReleasePlugin._
+import SonatypeKeys._
 
 // ··· Settings ···
 
-seq(releaseSettings: _*)
+sonatypeSettings
 
 // ··· Project Info ···
 
@@ -85,9 +85,8 @@ pomExtra := (
   <url>https://github.com/Jarlakxen/spray-extensions</url>
   <licenses>
     <license>
-      <name>GPL v2</name>
-      <url>https://github.com/Jarlakxen/spray-extensions/blob/master/LICENSE</url>
-      <distribution>repo</distribution>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
   <scm>
@@ -103,13 +102,3 @@ pomExtra := (
     </developer>
   </developers>
 )
-
-credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
-
-publishTo <<= version { v =>
-  val nexus = "http://oss.sonatype.org/"
-  if (v.endsWith("-SNAPSHOT"))
-  Some("sonatype-nexus-snapshots" at nexus + "content/repositories/snapshots/")
-  else
-  Some("sonatype-nexus-staging" at nexus + "service/local/staging/deploy/maven2/")
-}
